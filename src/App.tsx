@@ -14,9 +14,11 @@ function App() {
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
 
-  const [error, setError] = useState<string>("");
+  const [taskError, setTaskError] = useState<string>("");
+  const [listNameError, setListNameError] = useState<string>("");
 
   const [addInput, setAddInput] = useState<boolean>(false);
+  const [listNameToInput, setListNameToInput] = useState<boolean>(false);
 
   const [listName, setListName] = useState<string>(() => {
     const savedListName = localStorage.getItem("listName");
@@ -58,13 +60,13 @@ function App() {
     const value = content.current?.value.trim();
 
     if (!value) {
-      setError("Veuillez saisir une tache");
+      setTaskError("Veuillez saisir une tache");
       return;
     }
 
     setTasks([...tasks, { content: value, done: false }]);
 
-    setError("");
+    setTaskError("");
   };
 
   const setNewListName = (e: React.SyntheticEvent<HTMLFormElement>) => {
@@ -73,11 +75,16 @@ function App() {
     const value = listNameInput.current?.value.trim();
 
     if (!value) {
-      setError("Veuillez saisir un nom de liste");
+      setListNameError("Veuillez saisir un nom de liste");
       return;
     }
     setListName(value);
-    setError("");
+    setListNameError("");
+  };
+
+  const removeListName = () => {
+    setListName("");
+    setAddInput(!addInput);
   };
 
   // Cycle
@@ -127,11 +134,16 @@ function App() {
                   type="text"
                   placeholder="Nom de la liste"
                   ref={listNameInput}
-                  onChange={() => setError("")}
+                  onChange={() => setListNameError("")}
                 />
                 <button type="submit">Ajouter</button>
               </form>
             </div>
+            {listNameError && (
+              <p style={{ color: "red", fontSize: "0.9rem", marginTop: "5px" }}>
+                {listNameError}
+              </p>
+            )}
           </div>
         ))}
 
@@ -145,30 +157,50 @@ function App() {
             type="text"
             placeholder="Que souhaitez-vous ajouter ?"
             ref={content}
-            onChange={() => setError("")}
+            onChange={() => setTaskError("")}
           />
           <button type="submit">Ajouter</button>
         </form>
 
-        {error && (
+        {taskError && (
           <p style={{ color: "red", fontSize: "0.9rem", marginTop: "5px" }}>
-            {error}
+            {taskError}
           </p>
         )}
       </div>
       {listName && (
         <div className="list-name-container">
-          <h2 className="list-name">{listName}</h2>
-          <button type="button" onClick={() => listNameHandler()}>
-            Modifier le nom de la liste
-          </button>
-          <button
-            type="button"
-            className="remove-button"
-            onClick={() => removeListName()}
-          >
-            Supprimer le nom de la liste
-          </button>
+          {!listNameToInput ? (
+            <div>
+              <h2 className="list-name">{listName}</h2>
+              <button
+                type="button"
+                onClick={() => setListNameToInput(!listNameToInput)}
+              >
+                Modifier le nom de la liste
+              </button>
+              <button
+                type="button"
+                className="remove-button"
+                onClick={() => removeListName()}
+              >
+                Supprimer le nom de la liste
+              </button>
+            </div>
+          ) : (
+            <div className="addListName">
+              <form
+                onSubmit={(event) => {
+                  setNewListName(event);
+                  setListNameError("");
+                  setListNameToInput(!listNameToInput);
+                }}
+              >
+                <input type="text" placeholder={listName} ref={listNameInput} />
+                <button type="submit">Ajouter</button>
+              </form>
+            </div>
+          )}
         </div>
       )}
       {tasks.length > 0 && (
