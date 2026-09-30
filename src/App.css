@@ -15,13 +15,77 @@
   font-weight: bold;
 }
 
+.App .btn-listName {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px 16px;
+  border: 1px solid #8785a2;
+  border-radius: 5px;
+  background-color: white;
+  color: #696782;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.App .btn-listName:hover {
+  background-color: #8785a2;
+  color: white;
+}
+
+.App .btn-listName:focus-visible {
+  outline: 3px solid rgba(135, 133, 162, 0.35);
+  outline-offset: 3px;
+}
+
+.App .addListName form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.App .addListName {
+  margin-bottom: 20px;
+}
+
+.App .addListName .btn-listName {
+  flex: 0 0 auto;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.App .list-name-input {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 1px solid #c9c8d7;
+  border-radius: 5px;
+  background-color: white;
+  color: #314e52;
+  font: inherit;
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.App .list-name-input::placeholder {
+  color: #88879a;
+}
+
+.App .list-name-input:focus {
+  border-color: #8785a2;
+  box-shadow: 0 0 0 3px rgba(135, 133, 162, 0.2);
+}
+
 .App .add {
   background-color: #dbe2ef;
   padding: 15px 30px;
-  -webkit-box-shadow:
-    0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12),
-    0 3px 1px -2px rgba(0, 0, 0, 0.2);
   box-shadow:
     0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12),
@@ -33,30 +97,60 @@
 .App .add form {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .App .add input {
-  border: 1px solid white;
-  border-radius: 500px;
-  padding: 10px 10px 10px 20px;
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 1px solid #c9c8d7;
+  border-radius: 5px;
+  padding: 10px 14px;
   width: 100%;
+  background-color: white;
   font-size: 1rem;
   outline: none;
   color: #314e52;
   font-weight: 300;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.App .add input::placeholder {
+  color: #88879a;
+}
+
+.App .add input:focus {
+  border-color: #8785a2;
+  box-shadow: 0 0 0 3px rgba(135, 133, 162, 0.2);
 }
 
 .App .add button {
-  background: -webkit-radial-gradient(bottom left, #ffc73c, salmon);
-  color: white;
+  flex: 0 0 auto;
+  background-color: white;
+  color: #696782;
   padding: 10px 15px;
-  border: 0;
-  border-radius: 15px;
+  border: 1px solid #8785a2;
+  border-radius: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  font-size: 1em;
-  margin-left: 15px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.App .add button:hover {
+  background-color: #8785a2;
+  color: white;
+}
+
+.App .add button:focus-visible {
+  outline: 3px solid rgba(135, 133, 162, 0.35);
+  outline-offset: 3px;
 }
 
 .App .add button svg {

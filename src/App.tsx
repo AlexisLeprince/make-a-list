@@ -76,10 +76,13 @@ function App() {
 
     if (!value) {
       setListNameError("Veuillez saisir un nom de liste");
-      return;
+      return false;
     }
+
     setListName(value);
     setListNameError("");
+
+    return true;
   };
 
   const removeListName = () => {
@@ -91,6 +94,10 @@ function App() {
   useEffect(() => {
     content.current?.focus();
   }, []);
+
+  useEffect(() => {
+    listNameInput.current?.focus();
+  }, [addInput, listNameToInput]);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -115,28 +122,31 @@ function App() {
           <button
             type="button"
             onClick={() => setAddInput(!addInput)}
-            className="addInputListName"
+            className="btn-listName"
           >
             Ajouter un nom à cette liste
           </button>
         ) : (
           <div>
-            <button
-              type="button"
-              onClick={() => setAddInput(!addInput)}
-              className="addInputListName"
-            >
-              Retirer le nom de cette liste
-            </button>
             <div className="addListName">
               <form onSubmit={(event) => setNewListName(event)}>
+                <button
+                  type="button"
+                  onClick={() => setAddInput(!addInput)}
+                  className="btn-listName"
+                >
+                  Retirer le nom de cette liste
+                </button>
                 <input
                   type="text"
                   placeholder="Nom de la liste"
                   ref={listNameInput}
+                  className="list-name-input"
                   onChange={() => setListNameError("")}
                 />
-                <button type="submit">Ajouter</button>
+                <button className="btn-listName" type="submit">
+                  Ajouter
+                </button>
               </form>
             </div>
             {listNameError && (
@@ -191,14 +201,29 @@ function App() {
             <div className="addListName">
               <form
                 onSubmit={(event) => {
-                  setNewListName(event);
-                  setListNameError("");
-                  setListNameToInput(!listNameToInput);
+                  const success = setNewListName(event);
+
+                  if (success) {
+                    setListNameToInput(false);
+                  }
                 }}
               >
-                <input type="text" placeholder={listName} ref={listNameInput} />
-                <button type="submit">Ajouter</button>
+                <input
+                  type="text"
+                  defaultValue={listName}
+                  ref={listNameInput}
+                  onChange={() => setListNameError("")}
+                />
+
+                <button type="submit">Modifier</button>
               </form>
+              {listNameError && (
+                <p
+                  style={{ color: "red", fontSize: "0.9rem", marginTop: "5px" }}
+                >
+                  {listNameError}
+                </p>
+              )}
             </div>
           )}
         </div>
