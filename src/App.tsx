@@ -185,16 +185,38 @@ function App() {
               <h2 className="list-name">{listName}</h2>
               <button
                 type="button"
+                className="list-name-action"
+                aria-label="Modifier le nom de la liste"
                 onClick={() => setListNameToInput(!listNameToInput)}
               >
-                Modifier le nom de la liste
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m16 5 3 3M4 20l4.5-1 11-11a2.12 2.12 0 0 0-3-3l-11 11L4 20Z" />
+                </svg>
               </button>
               <button
                 type="button"
-                className="remove-button"
+                className="list-name-action"
+                aria-label="Supprimer le nom de la liste"
                 onClick={() => removeListName()}
               >
-                Supprimer le nom de la liste
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                >
+                  <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
               </button>
             </div>
           ) : (
@@ -210,12 +232,30 @@ function App() {
               >
                 <input
                   type="text"
+                  className="list-name-edit-input"
                   defaultValue={listName}
+                  size={Math.max(listName.length, 1)}
                   ref={listNameInput}
                   onChange={() => setListNameError("")}
                 />
 
-                <button type="submit">Modifier</button>
+                <button
+                  type="submit"
+                  className="list-name-action"
+                  aria-label="valider le nouveau nom de la liste"
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m5 12 4 4L19 6" />
+                  </svg>
+                </button>
               </form>
               {listNameError && (
                 <p
