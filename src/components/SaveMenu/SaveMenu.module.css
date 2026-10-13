@@ -1,0 +1,97 @@
+.menuButton,
+.closeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border: 0;
+  border-radius: 5px;
+  background: white;
+  color: #696782;
+  cursor: pointer;
+}
+
+.menuButton {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
+}
+
+.menuButton:hover,
+.closeButton:hover,
+.menuButton:focus-visible,
+.closeButton:focus-visible {
+  background-color: #8785a2;
+  color: white;
+}
+
+.menuButton svg,
+.closeButton svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  border: 0;
+  background: rgb(0 0 0 / 35%);
+  cursor: pointer;
+}
+
+.panel {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 1001;
+  width: min(320px, 85vw);
+  padding: 16px;
+  background: white;
+  box-shadow: 2px 0 12px rgb(0 0 0 / 18%);
+  animation: slideIn 250ms ease-out both;
+}
+
+.closing {
+  animation: slideOut 250ms ease-in both;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .closing {
+    animation-duration: 1ms;
+  }
+}

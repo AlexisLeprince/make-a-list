@@ -242,6 +242,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  margin-bottom: 15px;
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -281,6 +282,34 @@
   font-size: 0.9rem;
 }
 
+.App .saveList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border: 1px solid #8785a2;
+  border-radius: 5px;
+  background: white;
+  color: #696782;
+  cursor: pointer;
+}
+
+.App .saveList:hover,
+.App .saveList:focus-visible {
+  background-color: #8785a2;
+  color: white;
+}
+
+.App .saveList svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
 .App .clear-tasks svg {
   width: 18px;
   height: 18px;
@@ -308,11 +337,6 @@
   .App .list-name-container .list-name {
     flex-basis: 100%;
     text-align: center;
-  }
-
-  .App .task-actions label,
-  .App .clear-tasks {
-    font-size: 0;
   }
 
   .App .clear-tasks {
