@@ -4,6 +4,19 @@
   max-width: 700px;
 }
 
+.App .sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-bottom: 20px;
+  padding: 10px 15px 0;
+  background-color: white;
+  box-shadow:
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
 .App button:focus-visible {
   outline: 2px solid black;
   outline-offset: 0;
@@ -13,8 +26,13 @@
   text-transform: uppercase;
   color: transparent;
   color: #8785a2;
-  font-size: 4rem;
-  padding: 30px;
+  font-size: 1.5rem;
+  height: 40px;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-weight: bold;
 }
@@ -25,7 +43,7 @@
 
 .App .list-name {
   color: #8785a2;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   text-align: center;
   font-weight: bold;
 }
@@ -160,17 +178,9 @@
 }
 
 .App .add {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  margin: 0 -15px -12px;
+  padding: 12px 15px 12px;
   background-color: #dbe2ef;
-  padding: 15px 30px;
-  box-shadow:
-    0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12),
-    0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
-  border-radius: 5px;
 }
 
 .App .add form {
@@ -183,11 +193,12 @@
   flex: 1 1 auto;
   min-width: 0;
   border: 1px solid #c9c8d7;
-  border-radius: 5px;
-  padding: 10px 14px;
+  border-radius: 10px;
+  min-height: 42px;
+  padding: 10px 12px;
   width: 100%;
   background-color: white;
-  font-size: 1rem;
+  font-size: 0.875rem;
   outline: none;
   color: #314e52;
   font-weight: 300;
@@ -209,13 +220,14 @@
   flex: 0 0 auto;
   background-color: white;
   color: #696782;
-  padding: 10px 15px;
+  min-height: 42px;
+  padding: 10px 12px;
   border: 1px solid #8785a2;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   font-weight: 600;
   transition:
     background-color 150ms ease,

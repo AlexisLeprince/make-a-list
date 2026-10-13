@@ -124,10 +124,33 @@ function App() {
   // HTML
   return (
     <div className="App">
-      <SaveMenu />
-      <header>
-        <span>TO-DO</span>
-      </header>
+      <div className="sticky-header">
+        <SaveMenu />
+        <header>
+          <span>TO-DO</span>
+        </header>
+        <div className="add">
+          <form
+            onSubmit={(event) => {
+              setNewTask(event);
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Que souhaitez-vous ajouter ?"
+              ref={content}
+              onChange={() => setTaskError("")}
+            />
+            <button type="submit">Ajouter</button>
+          </form>
+
+          {taskError && (
+            <p style={{ color: "red", fontSize: "0.9rem", marginTop: "5px" }}>
+              {taskError}
+            </p>
+          )}
+        </div>
+      </div>
       {!listName &&
         (!addInput ? (
           <button
@@ -168,27 +191,6 @@ function App() {
           </div>
         ))}
 
-      <div className="add">
-        <form
-          onSubmit={(event) => {
-            setNewTask(event);
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Que souhaitez-vous ajouter ?"
-            ref={content}
-            onChange={() => setTaskError("")}
-          />
-          <button type="submit">Ajouter</button>
-        </form>
-
-        {taskError && (
-          <p style={{ color: "red", fontSize: "0.9rem", marginTop: "5px" }}>
-            {taskError}
-          </p>
-        )}
-      </div>
       {listName && (
         <div className="list-name-container">
           {!listNameToInput ? (

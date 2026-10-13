@@ -47,16 +47,19 @@ export default function SaveMenu() {
             aria-label="Menu"
             onAnimationEnd={finishClosing}
           >
-            <button
-              type="button"
-              className={classes.closeButton}
-              aria-label="Fermer le menu"
-              onClick={closeMenu}
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m6 6 12 12M18 6 6 18" />
-              </svg>
-            </button>
+            <div className={classes.menuHeader}>
+              <h2>Mes listes</h2>
+              <button
+                type="button"
+                className={classes.closeButton}
+                aria-label="Fermer le menu"
+                onClick={closeMenu}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+              </button>
+            </div>
           </aside>
         </>
       )}
