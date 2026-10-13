@@ -2,7 +2,6 @@
   margin: auto;
   width: 100%;
   max-width: 700px;
-  margin-top: 50px;
 }
 
 .App button:focus-visible {
@@ -237,12 +236,21 @@
 }
 
 .App .task-actions label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
   transition:
     background-color 150ms ease,
     color 150ms ease;
+}
+
+.App .task-actions input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
 }
 
 .App .task-actions label:hover,
@@ -287,4 +295,25 @@
 .App .clear-tasks:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  .App .list-name-container > div:not(.addListName) {
+    flex-wrap: wrap;
+  }
+
+  .App .list-name-container .list-name {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .App .task-actions label,
+  .App .clear-tasks {
+    font-size: 0;
+  }
+
+  .App .clear-tasks {
+    gap: 0;
+    margin-right: 12px;
+  }
 }
