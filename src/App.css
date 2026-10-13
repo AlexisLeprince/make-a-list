@@ -5,6 +5,11 @@
   margin-top: 50px;
 }
 
+.App button:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 0;
+}
+
 .App header {
   text-transform: uppercase;
   color: transparent;
@@ -47,23 +52,27 @@
 }
 
 .App .list-name-edit-input:focus {
-  border-bottom-style: solid;
+  border: 2px solid black;
 }
 
 .App .list-name-container > div:not(.addListName) {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px;
 }
 
 .App .list-name-container .list-name {
+  flex: 0 1 auto;
+  min-width: 0;
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .App .list-name-action {
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   width: 2.5rem;
@@ -81,14 +90,10 @@
   height: 100%;
 }
 
-.App .list-name-action:hover {
+.App .list-name-action:hover,
+.App .list-name-action:focus-visible {
   background-color: #8785a2;
   color: white;
-}
-
-.App .list-name-action:focus-visible {
-  outline: 3px solid rgba(135, 133, 162, 0.35);
-  outline-offset: 3px;
 }
 
 .App .btn-listName {
@@ -108,14 +113,10 @@
     box-shadow 150ms ease;
 }
 
-.App .btn-listName:hover {
+.App .btn-listName:hover,
+.App .btn-listName:focus-visible {
   background-color: #8785a2;
   color: white;
-}
-
-.App .btn-listName:focus-visible {
-  outline: 3px solid rgba(135, 133, 162, 0.35);
-  outline-offset: 3px;
 }
 
 .App .addListName form {
@@ -155,8 +156,8 @@
 }
 
 .App .list-name-input:focus {
-  border-color: #8785a2;
-  box-shadow: 0 0 0 3px rgba(135, 133, 162, 0.2);
+  border: 2px solid black;
+  box-shadow: none;
 }
 
 .App .add {
@@ -198,8 +199,8 @@
 }
 
 .App .add input:focus {
-  border-color: #8785a2;
-  box-shadow: 0 0 0 3px rgba(135, 133, 162, 0.2);
+  border: 2px solid black;
+  box-shadow: none;
 }
 
 .App .add button {
@@ -219,14 +220,10 @@
     border-color 150ms ease;
 }
 
-.App .add button:hover {
+.App .add button:hover,
+.App .add button:focus-visible {
   background-color: #8785a2;
   color: white;
-}
-
-.App .add button:focus-visible {
-  outline: 3px solid rgba(135, 133, 162, 0.35);
-  outline-offset: 3px;
 }
 
 .App .add button svg {
@@ -248,9 +245,15 @@
     color 150ms ease;
 }
 
-.App .task-actions label:hover {
+.App .task-actions label:hover,
+.App .task-actions label:focus-within {
   background-color: #8785a2;
   color: white;
+}
+
+.App .task-actions input[type="checkbox"]:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 0;
 }
 
 .App .clear-tasks {
@@ -276,7 +279,8 @@
   stroke-width: 2;
 }
 
-.App .clear-tasks:hover:not(:disabled) {
+.App .clear-tasks:hover:not(:disabled),
+.App .clear-tasks:focus-visible:not(:disabled) {
   background-color: #ffebee;
 }
 

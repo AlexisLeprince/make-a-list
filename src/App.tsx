@@ -69,6 +69,13 @@ function App() {
     setTaskError("");
   };
 
+  const majTaskHandler = (index: number, content: string) => {
+    const value = content.trim();
+    const newTasks = [...tasks];
+    newTasks[index] = { ...newTasks[index], content: value };
+    setTasks(newTasks);
+  };
+
   const setNewListName = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -314,6 +321,7 @@ function App() {
           done={task.done}
           doneClicked={() => doneClickHandler(index)}
           remTask={() => removeTask(index)}
+          majTask={(content) => majTaskHandler(index, content)}
         />
       ))}
     </div>
